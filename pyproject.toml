@@ -1,5 +1,5 @@
 [project]
-name = "build-from-scratch"
+name = "0to1"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -12,9 +12,6 @@ dependencies = [
     "scipy>=1.18.1",
     "torch>=2.15.0",
 ]
-
-[project.scripts]
-build-from-scratch = "build_from_scratch:main"
 
 [build-system]
 requires = ["hatchling"]
