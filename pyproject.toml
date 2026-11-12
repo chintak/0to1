@@ -32,8 +32,9 @@ packages = ["src/zero2one"]
 venvPath = "."
 venv = ".venv"
 
-# target-version is inferred from requires-python; line-length is ruff's 88 default.
+# target-version is inferred from requires-python.
 [tool.ruff]
+line-length = 100
 # `ruff check` applies safe fixes without needing --fix, and lists what it fixed.
 fix = true
 show-fixes = true
