@@ -26,3 +26,13 @@ dev = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/zero2one"]
+
+# Resolve imports from the uv venv (pyright otherwise uses python3 on PATH).
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+# target-version is inferred from requires-python; line-length is ruff's 88 default.
+[tool.ruff.lint]
+# pycodestyle, pyflakes, isort, pyupgrade, flake8-bugbear, flake8-simplify
+select = ["E", "F", "I", "UP", "B", "SIM"]
