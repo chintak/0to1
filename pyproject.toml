@@ -35,9 +35,6 @@ venv = ".venv"
 # target-version is inferred from requires-python.
 [tool.ruff]
 line-length = 100
-# `ruff check` applies safe fixes without needing --fix, and lists what it fixed.
-fix = true
-show-fixes = true
 
 [tool.ruff.lint]
 # pycodestyle, pyflakes, isort, pyupgrade, flake8-bugbear, flake8-simplify
