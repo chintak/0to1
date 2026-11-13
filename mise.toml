@@ -15,56 +15,14 @@ uv = "0.13.7"
 # PATH, so launch them from an activated shell.
 python.uv_venv_auto = "source"
 
-# ── environment ─────────────────────────────────────────────────────────
 [tasks.sync]
-description = "Create/update .venv from uv.lock (includes the dev group)"
+description = "Create/update .venv from uv.lock"
 run = "uv sync"
-
-[tasks.lock]
-description = "Re-resolve uv.lock after editing pyproject.toml"
-run = "uv lock"
-
-[tasks.upgrade]
-description = "Upgrade all locked deps to the newest allowed versions, then sync"
-run = ["uv lock --upgrade", "uv sync"]
-
-[tasks.clean]
-description = "Remove build artifacts and tool caches (keeps .venv)"
-run = "rm -rf build dist .ruff_cache .pytest_cache && find . -path ./.venv -prune -o -name __pycache__ -type d -exec rm -rf {} +"
-
-# ── quality ─────────────────────────────────────────────────────────────
-[tasks.lint]
-description = "Lint with ruff"
-run = "uv run ruff check"
 
 [tasks.fmt]
 description = "Autofix lint issues and format with ruff"
 run = ["uv run ruff check --fix", "uv run ruff format"]
 
-[tasks.typecheck]
-description = "Type-check with pyright"
-run = "uv run pyright"
-
 [tasks.check]
-description = "Lint, format-check and type-check (CI gate)"
-depends = ["lint", "typecheck"]
-run = "uv run ruff format --check"
-
-# ── ML / notebooks ──────────────────────────────────────────────────────
-[tasks.torch-info]
-description = "Show torch/numpy versions and available accelerators"
-run = """
-uv run python -c '
-import numpy, torch
-print("torch", torch.__version__, "| numpy", numpy.__version__)
-print("mps:", torch.backends.mps.is_available(), "| cuda:", torch.cuda.is_available())
-'
-"""
-
-[tasks.kernel]
-description = "Register .venv as the 'zero2one' Jupyter kernel"
-run = "uv run python -m ipykernel install --user --name zero2one --display-name 'Python (zero2one)'"
-
-[tasks.lab]
-description = "Start JupyterLab in the project venv"
-run = "uv run jupyter lab"
+description = "Lint, format-check and type-check"
+run = ["uv run ruff check", "uv run ruff format --check", "uv run pyright"]
