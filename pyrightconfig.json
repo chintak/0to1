@@ -2,7 +2,7 @@
   // Pyright config (CLI and the pyright LSP in editors).
   // No venvPath/venv: pyright uses the `python` on PATH, which mise points at
   // .venv/bin when the shell is activated (python.uv_venv_auto in mise.toml).
-  "include": ["src"],
+  "include": ["zero2one"],
   "pythonVersion": "3.14",
   "typeCheckingMode": "standard"
 }
