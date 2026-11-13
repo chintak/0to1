@@ -21,26 +21,10 @@ build-backend = "hatchling.build"
 dev = [
     "ipykernel>=7.4.0",
     "jupyter>=1.1.1",
+    "pyright>=1.1.414",
     "rich>=15.0.0",
+    "ruff>=0.16.8",
 ]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/zero2one"]
-
-# Resolve imports from the uv venv (pyright otherwise uses python3 on PATH).
-[tool.pyright]
-venvPath = "."
-venv = ".venv"
-
-# target-version is inferred from requires-python.
-[tool.ruff]
-line-length = 100
-
-[tool.ruff.lint]
-# pycodestyle, pyflakes, isort, pyupgrade, flake8-bugbear, flake8-simplify
-select = ["E", "F", "I", "UP", "B", "SIM"]
-
-[tool.ruff.format]
-# Also format code examples inside docstrings; normalize to \n line endings.
-docstring-code-format = true
-line-ending = "lf"

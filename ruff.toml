@@ -1,0 +1,12 @@
+# Ruff linter + formatter config (also used by the ruff LSP in editors).
+# target-version is inferred from requires-python in pyproject.toml.
+line-length = 100
+
+[lint]
+# pycodestyle, pyflakes, isort, pyupgrade, flake8-bugbear, flake8-simplify
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[format]
+# Also format code examples inside docstrings; normalize to \n line endings.
+docstring-code-format = true
+line-ending = "lf"
