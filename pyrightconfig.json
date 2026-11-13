@@ -1,8 +1,12 @@
 {
   // Pyright config (CLI and the pyright LSP in editors).
-  // No venvPath/venv: pyright uses the `python` on PATH, which mise points at
-  // .venv/bin when the shell is activated (python.uv_venv_auto in mise.toml).
-  "include": ["src"],
+  // venvPath/venv pin the interpreter to this project's .venv (paths are
+  // relative to this file), so imports resolve however the editor was
+  // launched -- e.g. `hx 0to1/` from ~/git, where mise has not activated
+  // .venv and the `python` on PATH is not the project's.
+  "include": ["zero2one"],
+  "venvPath": ".",
+  "venv": ".venv",
   "pythonVersion": "3.14",
   "typeCheckingMode": "standard"
 }

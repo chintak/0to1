@@ -11,8 +11,9 @@ uv = "0.13.7"
 [settings]
 # On cd, activate this project's .venv (VIRTUAL_ENV + .venv/bin on PATH).
 # "source" only activates; run `mise run sync` (uv sync) to create/update it.
-# Editors and LSPs (pyright, ruff in hx) resolve the venv and its tools via
-# PATH, so launch them from an activated shell.
+# Editors and LSPs (ruff in hx) resolve the venv and its tools via
+# PATH, so launch them from an activated shell. Pyright pins .venv itself
+# (pyrightconfig.json), so it works from any cwd.
 python.uv_venv_auto = "source"
 
 [tasks.sync]
