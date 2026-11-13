@@ -27,11 +27,6 @@ dev = [
 [tool.hatch.build.targets.wheel]
 packages = ["src/zero2one"]
 
-# Resolve imports from the uv venv (pyright otherwise uses python3 on PATH).
-[tool.pyright]
-venvPath = "."
-venv = ".venv"
-
 # target-version is inferred from requires-python.
 [tool.ruff]
 line-length = 100
