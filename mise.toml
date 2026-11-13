@@ -1,0 +1,33 @@
+# mise owns the toolchain and shell activation; uv owns Python (.python-version)
+# and dependencies (pyproject.toml + uv.lock).
+
+[tools]
+uv = "0.13"
+
+[settings]
+# On cd, activate this project's .venv (VIRTUAL_ENV + .venv/bin on PATH).
+# "source" only activates; run `mise run sync` (uv sync) to create/update it.
+# Editors and LSPs (pyright in hx) resolve imports via the `python` on PATH,
+# so launch them from an activated shell.
+python.uv_venv_auto = "source"
+
+[tasks.sync]
+description = "Create/update .venv from uv.lock"
+run = "uv sync"
+
+[tasks.lint]
+description = "Lint with ruff"
+run = "ruff check ."
+
+[tasks.fmt]
+description = "Format with ruff"
+run = ["ruff check --fix .", "ruff format ."]
+
+[tasks.typecheck]
+description = "Type-check with pyright"
+run = "pyright"
+
+[tasks.check]
+description = "Lint, format-check and type-check"
+depends = ["lint", "typecheck"]
+run = "ruff format --check ."
