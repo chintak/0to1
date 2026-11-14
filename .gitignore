@@ -11,3 +11,6 @@ wheels/
 
 # Git worktrees
 .worktrees/
+
+# Local datasets (too large for git)
+/data/
